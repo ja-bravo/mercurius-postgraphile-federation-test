@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  database:
+    image: "postgres:11.1-alpine"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASS=password
+    ports:
+      - 5432:5432
+    container_name: "test_fastify_postgraphile_database"
+    volumes:
+      - ./fixtures/init.sql:/docker-entrypoint-initdb.d/init.sql
